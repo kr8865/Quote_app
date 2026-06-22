@@ -18,7 +18,7 @@ const Home = () => {
     const fetchQuotes = async () => {
         setLoading(true);
         try {
-            let query = 'http://localhost:5001/api/quotes?';
+            let query = 'https://quote-app-1-42t5.onrender.com/api/quotes?';
             if (search) query += `search=${search}&`;
             if (category && category !== 'All') query += `category=${category}`;
 

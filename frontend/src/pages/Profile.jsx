@@ -14,7 +14,7 @@ const Profile = () => {
     useEffect(() => {
         const fetchMyQuotes = async () => {
             try {
-                const res = await axios.get('http://localhost:5001/api/quotes/myquotes');
+                const res = await axios.get('https://quote-app-1-42t5.onrender.com/api/quotes/myquotes');
                 setMyQuotes(res.data.data);
             } catch (err) {
                 console.error(err);
