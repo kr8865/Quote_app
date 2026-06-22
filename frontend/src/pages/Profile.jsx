@@ -14,7 +14,7 @@ const Profile = () => {
     useEffect(() => {
         const fetchMyQuotes = async () => {
             try {
-                const res = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/quotes/myquotes`);
+                const res = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/quotes/myquotes`);
                 setMyQuotes(res.data.data);
             } catch (err) {
                 console.error(err);

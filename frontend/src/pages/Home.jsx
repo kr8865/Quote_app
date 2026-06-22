@@ -18,7 +18,7 @@ const Home = () => {
     const fetchQuotes = async () => {
         setLoading(true);
         try {
-            let query = `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/quotes?`;
+            let query = `${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/quotes?`;
             if (search) query += `search=${search}&`;
             if (category && category !== 'All') query += `category=${category}`;
 
