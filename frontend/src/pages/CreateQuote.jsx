@@ -21,7 +21,7 @@ const CreateQuote = () => {
         }
 
         try {
-            await axios.post('https://quote-app-1-42t5.onrender.com/api/quotes', {
+            await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/quotes`, {
                 content, author, category
             });
             navigate('/');

@@ -19,7 +19,7 @@ const QuoteCard = ({ quote: initialQuote, onToggleFavorite, onDelete }) => {
         if (!user) return alert('Please login to like quotes.');
 
         try {
-            const res = await axios.put(`https://quote-app-1-42t5.onrender.com/api/quotes/${quote._id}/favorite`);
+            const res = await axios.put(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/quotes/${quote._id}/favorite`);
             setIsFavorited(res.data.data.isFavorited);
             setFavoritesCount(res.data.data.favoritesCount);
             if (onToggleFavorite) onToggleFavorite(quote._id, res.data.data.isFavorited);
@@ -31,7 +31,7 @@ const QuoteCard = ({ quote: initialQuote, onToggleFavorite, onDelete }) => {
     const handleDelete = async () => {
         if (!window.confirm('Are you sure you want to delete this quote?')) return;
         try {
-            await axios.delete(`https://quote-app-1-42t5.onrender.com/api/quotes/${quote._id}`);
+            await axios.delete(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/quotes/${quote._id}`);
             if (onDelete) onDelete(quote._id);
         } catch (err) {
             console.error(err);
@@ -41,7 +41,7 @@ const QuoteCard = ({ quote: initialQuote, onToggleFavorite, onDelete }) => {
 
     const handleSaveEdit = async () => {
         try {
-            const res = await axios.put(`https://quote-app-1-42t5.onrender.com/api/quotes/${quote._id}`, {
+            const res = await axios.put(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/quotes/${quote._id}`, {
                 content: editContent,
                 category: editCategory
             });

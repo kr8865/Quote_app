@@ -144,7 +144,7 @@ exports.toggleFavorite = async (req, res, next) => {
             return res.status(404).json({ success: false, message: 'Quote not found' });
         }
 
-        const isFavorited = user.favorites.includes(quote._id);
+        const isFavorited = user.favorites.some(fav => fav.toString() === quote._id.toString());
 
         if (isFavorited) {
             // Remove from favorites

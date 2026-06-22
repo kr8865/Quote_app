@@ -18,7 +18,7 @@ const Home = () => {
     const fetchQuotes = async () => {
         setLoading(true);
         try {
-            let query = 'https://quote-app-1-42t5.onrender.com/api/quotes?';
+            let query = `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/quotes?`;
             if (search) query += `search=${search}&`;
             if (category && category !== 'All') query += `category=${category}`;
 

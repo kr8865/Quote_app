@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
             return;
         }
         try {
-            const res = await axios.get('https://quote-app-1-42t5.onrender.com/api/auth/me');
+            const res = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/auth/me`);
             setUser(res.data.data);
         } catch (err) {
             console.error(err);
@@ -38,14 +38,14 @@ export const AuthProvider = ({ children }) => {
     }, [token]);
 
     const login = async (email, password) => {
-        const res = await axios.post('https://quote-app-1-42t5.onrender.com/api/auth/login', { email, password });
+        const res = await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/auth/login`, { email, password });
         localStorage.setItem('token', res.data.token);
         setToken(res.data.token);
         loadUser();
     };
 
     const register = async (username, email, password) => {
-        const res = await axios.post('https://quote-app-1-42t5.onrender.com/api/auth/register', { username, email, password });
+        const res = await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/auth/register`, { username, email, password });
         localStorage.setItem('token', res.data.token);
         setToken(res.data.token);
         loadUser();
